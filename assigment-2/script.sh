@@ -25,7 +25,10 @@ while [[ $# -gt 0 ]]; do
             shift
             if [[ $# -gt 0 ]]; then
                 PORT="$1"
-                shift
+                if [[ $PORT =~ ^[0-9]+$ ]]; then
+                    echo "Using provided PORT: $PORT"
+                    shift
+                fi
             else
                 echo "Error: Port number not provided. Application will listen on $PORT"
             fi
