@@ -15,7 +15,8 @@ function healthcheck {
     if [ -z "$STATUS" ]; then
         echo "Container is not running."
     else
-        echo "STATUS: $STATUS listening on :$PORT"
+	LISTENER=$(docker port $APP)
+        echo "STATUS: $STATUS listening on :$LISTENER"
     fi
 }
 
